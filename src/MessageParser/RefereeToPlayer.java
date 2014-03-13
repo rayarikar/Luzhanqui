@@ -34,7 +34,7 @@ public class RefereeToPlayer {
 	private List<Object> returnList = new ArrayList<Object>();
 
 	// compiles the pattern defined globally
-	RefereeToPlayer(){
+	public RefereeToPlayer(){
 		pattern = Pattern.compile(REGEX);		
 	}
 
