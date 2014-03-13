@@ -55,7 +55,7 @@ public class RefereeToPlayer {
 	 * @param message
 	 * @return boolean
 	 */
-	protected boolean processRefereeMessage(String message){
+	public boolean processRefereeMessage(String message){
 		StringBuilder messageBuilder = new StringBuilder(message);
 		// return false if message does not have opening and closing parenthesis
 		if (messageBuilder.charAt(0) != LEFT_PARENTHESIS || 
