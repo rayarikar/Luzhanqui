@@ -32,6 +32,7 @@ public class RefereeToPlayer {
 	final char ONE = '1';
 	private final char TWO = '2';
 	private List<Object> returnList = new ArrayList<Object>();
+	private List<Object> emptyList = new ArrayList<Object>();
 
 	// compiles the pattern defined globally
 	public RefereeToPlayer(){
@@ -55,13 +56,13 @@ public class RefereeToPlayer {
 	 * @param message
 	 * @return boolean
 	 */
-	public boolean processRefereeMessage(String message){
+	public List processRefereeMessage(String message){
 		StringBuilder messageBuilder = new StringBuilder(message);
 		// return false if message does not have opening and closing parenthesis
 		if (messageBuilder.charAt(0) != LEFT_PARENTHESIS || 
 				messageBuilder.charAt
 				(messageBuilder.length() - 1) != RIGHT_PARENTHESIS)
-			return false;
+			return emptyList;
 		// remove the parenthesis and process message
 		messageBuilder.deleteCharAt(0);
 		messageBuilder.deleteCharAt(messageBuilder.length() - 1);
@@ -70,8 +71,9 @@ public class RefereeToPlayer {
 	}
 
 
-	private boolean checkForMessageType(StringBuilder innerMessage){		
+	private List checkForMessageType(StringBuilder innerMessage){		
 		try{
+			returnList.clear();
 			// <turn>
 			if (innerMessage.toString().substring(0, 2).equals(GO))
 				return checkForGoMessage(innerMessage);						
@@ -90,11 +92,11 @@ public class RefereeToPlayer {
 			// <outcome>
 			if (innerMessage.toString().substring(0, 7).equals(OUTCOME))
 				return checkForOutcomeMessage(innerMessage);
-
-			return false;
+			
+			return emptyList;
 		}
 		catch (Exception e){
-			return false;
+			return emptyList;
 		}
 	}
 
@@ -105,18 +107,24 @@ public class RefereeToPlayer {
 	 * @param innerMessage
 	 * @return boolean
 	 */
-	private boolean checkInnerMessage(StringBuilder innerMessage){
+	private List checkInnerMessage(StringBuilder innerMessage){
 		innerMessage.delete(0, 4);
 		innerMessage = Utility.removeStartBlankChars(innerMessage);
 		if (innerMessage.charAt(0) != ONE && innerMessage.charAt(0) != TWO)			
-			return false;
+			return emptyList;
+		int player = Integer.parseInt("" + innerMessage.charAt(0));
 		innerMessage.deleteCharAt(0);
 		innerMessage = Utility.removeStartBlankChars(innerMessage);		
 		if ( !innerMessage.toString().substring(0, 9).equals(TIME_MOVE))
-			return false;
+			return emptyList;
 		innerMessage.delete(0, 9);
 		innerMessage = Utility.removeStartBlankChars(innerMessage);
-		return checkForSeconds(innerMessage.toString().trim());		
+		if ( !checkForSeconds(innerMessage.toString().trim()))
+			return emptyList;
+		returnList.add(INIT);
+		returnList.add(player);
+		returnList.add(Double.parseDouble(innerMessage.toString().trim()));
+		return returnList;
 	}
 
 	/**
@@ -143,9 +151,9 @@ public class RefereeToPlayer {
 	private boolean checkForDigitsWithDecimal(String secondsInput){
 		String[] digits = secondsInput.split("\\.");
 		if (digits.length == 2)
-			if (isValidDigit(digits[0].trim()) && isValidDigit(digits[1].trim()))
-				return (isNonZeroNumber(digits[0].trim()) ||
-						isNonZeroNumber(digits[1].trim()));
+			if (isValidDigit(digits[0]) && isValidDigit(digits[1]))
+				return (isNonZeroNumber(digits[0]) ||
+						isNonZeroNumber(digits[1]));
 		return false;
 	}
 	
@@ -165,29 +173,35 @@ public class RefereeToPlayer {
 	 * @param innerMessage
 	 * @return boolean
 	 */
-	private boolean checkForGameEndMessage(StringBuilder innerMessage){
+	private List checkForGameEndMessage(StringBuilder innerMessage){
 		innerMessage.delete(0, 3);
 		innerMessage = Utility.removeStartBlankChars(innerMessage);
 		if (Integer.parseInt(innerMessage.toString().charAt(0) +"") <= 2 &&
-				Integer.parseInt(innerMessage.toString().charAt(0) +"") >= 0)
-			return true;
-		return false;
+				Integer.parseInt(innerMessage.toString().charAt(0) +"") >= 0){
+			returnList.add(GAME_END);
+			returnList.add(Integer.parseInt(innerMessage.toString().charAt(0) +""));
+			return returnList;
+		}
+		return emptyList;
 	}
 
 	/**
 	 * this method checks for the <turn> message syntax
 	 * @param innerMessage
-	 * @return boolean
+	 * @return List
 	 */
-	private boolean checkForGoMessage(StringBuilder innerMessage){
+	private List checkForGoMessage(StringBuilder innerMessage){
 		if (innerMessage.toString().length() < 2)
-			return false;	
+			return emptyList;
 		innerMessage.delete(0, 2);
 		innerMessage = Utility.removeStartBlankChars(innerMessage);
 		if (Integer.parseInt(innerMessage.toString().charAt(0) +"") == 1 ||
-				Integer.parseInt(innerMessage.toString().charAt(0) +"") == 2)
-			return true;
-		return false;
+				Integer.parseInt(innerMessage.toString().charAt(0) +"") == 2){
+			returnList.add(GO);
+			returnList.add(Integer.parseInt(innerMessage.toString().charAt(0) +""));
+			return returnList;
+		}
+		return emptyList;
 	}
 
 
@@ -196,20 +210,22 @@ public class RefereeToPlayer {
 	 * @param innerMessage
 	 * @return boolean
 	 */
-	private boolean checkForFlagMessage(StringBuilder innerMessage){
+	private List checkForFlagMessage(StringBuilder innerMessage){
 		if (innerMessage.toString().length() < 6)
-			return false;
+			return emptyList;
 		innerMessage.delete(0, 4);
 		innerMessage = Utility.removeStartBlankChars(innerMessage);
 		if (Integer.parseInt(innerMessage.toString().charAt(0) +"") > 2 ||
 				Integer.parseInt(innerMessage.toString().charAt(0) +"") <= 0)
-			return false;
+			return emptyList;
 		innerMessage.deleteCharAt(0);
 		innerMessage = Utility.removeStartBlankChars(innerMessage);
 		String position = innerMessage.toString().substring(0, innerMessage.toString().trim().length());
 		if ( !Utility.getPositionMap().containsKey(position))
-			return false;
-		return true;
+			return emptyList;
+		returnList.add(FLAG);
+		returnList.add(position);
+		return returnList;
 	}
 
 
@@ -218,13 +234,18 @@ public class RefereeToPlayer {
 	 * @param innerMessage
 	 * @return boolean
 	 */
-	private boolean checkForIllegalMessage(StringBuilder innerMessage){
+	private List checkForIllegalMessage(StringBuilder innerMessage){
 		innerMessage.delete(0, 7);
 		String modifiedMessage = innerMessage.toString().trim();
+		returnList.add(ILLEGAL);
 		if (modifiedMessage.charAt(0) == LEFT_PARENTHESIS &&
-				modifiedMessage.charAt(modifiedMessage.length() - 1) == RIGHT_PARENTHESIS)
-			return checkForPositions(modifiedMessage.toString().trim().substring(1, modifiedMessage.length() - 1));
-		return false;
+				modifiedMessage.charAt(modifiedMessage.length() - 1) == RIGHT_PARENTHESIS){
+			List illegalList = 
+					checkForPositions(modifiedMessage.toString().trim().substring(1, modifiedMessage.length() - 1));
+			if (illegalList.size() == 3)
+				return illegalList;
+		}
+		return emptyList;
 	}
 
 
@@ -233,17 +254,18 @@ public class RefereeToPlayer {
 	 * @param innerMessage
 	 * @return boolean
 	 */
-	private boolean checkForPositions(String innerMessage){
+	private List checkForPositions(String innerMessage){
 		List<String> positions = Utility.extractPositionsFromString(innerMessage);
 		if (positions.size() < 2)
-			return false;
+			return emptyList;
 		for (String eachPosition : positions){
 			if (eachPosition.trim().length() == 0)
 				continue;
 			if ( !Utility.getPositionMap().containsKey(eachPosition))
-				return false;
+				return emptyList;
+			returnList.add(eachPosition);
 		}
-		return true;
+		return returnList;
 	}
 
 	/**
@@ -251,21 +273,34 @@ public class RefereeToPlayer {
 	 * @param innerMessage
 	 * @return boolean
 	 */
-	private boolean checkForOutcomeMessage(StringBuilder innerMessage){
+	private List checkForOutcomeMessage(StringBuilder innerMessage){
 		innerMessage.delete(0, 7);
 		innerMessage = Utility.removeStartBlankChars(innerMessage);
+		returnList.add(OUTCOME);
 		// if it is <compare><move>
 		if (innerMessage.charAt(0) == LESS_THAN || 
 				innerMessage.charAt(0) == GREATER_THAN ||
 				innerMessage.charAt(0) == EQUAL){
 			// check for <move>
+			returnList.add(innerMessage.charAt(0) + "");
 			innerMessage.deleteCharAt(0);
 			innerMessage = Utility.removeStartBlankChars(innerMessage);
-			return checkMoveMessage(innerMessage);			
+			List moveList = checkMoveMessage(innerMessage);
+			if (moveList.size() == 4)
+				return moveList;
+			else
+				return emptyList;					
 		}
 		// if it is <move>
-		else
-			return checkForPositions(innerMessage.toString().trim().substring(1, innerMessage.length() - 1));
+		else{
+			List moveList = 
+			checkForPositions(innerMessage.toString().trim().
+					substring(1, innerMessage.length() - 1));
+			if (moveList.size() == 3)
+				return moveList;
+			else
+				return emptyList;
+		}
 	}
 	
 	/**
@@ -273,11 +308,11 @@ public class RefereeToPlayer {
 	 * @param innerMessage
 	 * @return boolean
 	 */
-	private boolean checkMoveMessage(StringBuilder innerMessage){
+	private List checkMoveMessage(StringBuilder innerMessage){
 		if (innerMessage.charAt(0) == LEFT_PARENTHESIS &&
 				innerMessage.charAt(innerMessage.length() - 1) == RIGHT_PARENTHESIS)
 			return checkForPositions(innerMessage.toString().trim().substring(1, innerMessage.length() - 1));
-		return false;
+		return emptyList;
 	}
 
 }
