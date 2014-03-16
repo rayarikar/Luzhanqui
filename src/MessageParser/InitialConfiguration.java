@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class InitialConfiguration {
 
-	static Map<String, String> rankInfo;
-	private Map<String, String> boardPosition;
+	static Map<String, String> rankInfoMap;
+	private Map<String, String> boardPositionMap;
 	// constants for name of the pieces
 	private static final String ENGINEER = "Engineer"; 
 	private static final String PLATOON_COMMANDAR = "Platoon Commandar"; 
@@ -60,19 +60,19 @@ public class InitialConfiguration {
 	 * VALUE -> Name of the piece
 	 */	
 	static{
-		rankInfo = new HashMap<String, String>();
-		rankInfo.put(ENGINEER_RANK, ENGINEER);
-		rankInfo.put(PLATOON_COMMANDAR_RANK, PLATOON_COMMANDAR);
-		rankInfo.put(CAPTAIN_RANK, CAPTAIN);
-		rankInfo.put(MAJOR_RANK, MAJOR);
-		rankInfo.put(COLONEL_RANK, COLONEL);
-		rankInfo.put(BRIGADIER_GENERAL_RANK, BRIGADIER_GENERAL);
-		rankInfo.put(MAJOR_GENERAL_RANK, MAJOR_GENERAL);
-		rankInfo.put(GENERAL_RANK, GENERAL);
-		rankInfo.put(FIELD_MARSHELL_RANK, FIELD_MARSHELL);
-		rankInfo.put(FLAG_RANK, FLAG);
-		rankInfo.put(BOMB_RANK, BOMB);
-		rankInfo.put(LANDMINE_RANK, LANDMINE);		
+		rankInfoMap = new HashMap<String, String>();
+		rankInfoMap.put(ENGINEER_RANK, ENGINEER);
+		rankInfoMap.put(PLATOON_COMMANDAR_RANK, PLATOON_COMMANDAR);
+		rankInfoMap.put(CAPTAIN_RANK, CAPTAIN);
+		rankInfoMap.put(MAJOR_RANK, MAJOR);
+		rankInfoMap.put(COLONEL_RANK, COLONEL);
+		rankInfoMap.put(BRIGADIER_GENERAL_RANK, BRIGADIER_GENERAL);
+		rankInfoMap.put(MAJOR_GENERAL_RANK, MAJOR_GENERAL);
+		rankInfoMap.put(GENERAL_RANK, GENERAL);
+		rankInfoMap.put(FIELD_MARSHELL_RANK, FIELD_MARSHELL);
+		rankInfoMap.put(FLAG_RANK, FLAG);
+		rankInfoMap.put(BOMB_RANK, BOMB);
+		rankInfoMap.put(LANDMINE_RANK, LANDMINE);		
 	}
 	
 	
@@ -85,37 +85,37 @@ public class InitialConfiguration {
 	 * player on the board.
 	 */
 	private void setBoardPositions(){
-		boardPosition = new HashMap<String, String>();
-		boardPosition.put(A + ONE, CAPTAIN_RANK);
-		boardPosition.put(B + ONE, MAJOR_RANK);
-		boardPosition.put(C + ONE, LANDMINE_RANK);
-		boardPosition.put(D + ONE, FLAG_RANK);
-		boardPosition.put(E + ONE, LANDMINE_RANK);
-		boardPosition.put(A + TWO, CAPTAIN_RANK);
-		boardPosition.put(B + TWO, CAPTAIN_RANK);
-		boardPosition.put(C + TWO, ENGINEER_RANK);
-		boardPosition.put(D + TWO, LANDMINE_RANK);
-		boardPosition.put(E + TWO, ENGINEER_RANK);
-		boardPosition.put(A + THREE, MAJOR_GENERAL_RANK);
-		boardPosition.put(B + THREE, CAMP);
-		boardPosition.put(C + THREE, PLATOON_COMMANDAR_RANK);
-		boardPosition.put(D + THREE, CAMP);
-		boardPosition.put(E + THREE, FIELD_MARSHELL_RANK);
-		boardPosition.put(A + FOUR, COLONEL_RANK);
-		boardPosition.put(B + FOUR, ENGINEER_RANK);
-		boardPosition.put(C + FOUR, CAMP);
-		boardPosition.put(D + FOUR, MAJOR_RANK);
-		boardPosition.put(E + FOUR, COLONEL_RANK);
-		boardPosition.put(A + FIVE, BOMB_RANK);
-		boardPosition.put(B + FIVE, CAMP);
-		boardPosition.put(C + FIVE, GENERAL_RANK);
-		boardPosition.put(D + FIVE, CAMP);
-		boardPosition.put(E + FIVE, BOMB_RANK);
-		boardPosition.put(A + SIX, PLATOON_COMMANDAR_RANK);
-		boardPosition.put(B + SIX, BRIGADIER_GENERAL_RANK);
-		boardPosition.put(C + SIX, MAJOR_GENERAL_RANK);
-		boardPosition.put(D + SIX, BRIGADIER_GENERAL_RANK);
-		boardPosition.put(E + SIX, PLATOON_COMMANDAR_RANK);		
+		boardPositionMap = new HashMap<String, String>();
+		boardPositionMap.put(A + ONE, CAPTAIN_RANK);
+		boardPositionMap.put(B + ONE, MAJOR_RANK);
+		boardPositionMap.put(C + ONE, LANDMINE_RANK);
+		boardPositionMap.put(D + ONE, FLAG_RANK);
+		boardPositionMap.put(E + ONE, LANDMINE_RANK);
+		boardPositionMap.put(A + TWO, CAPTAIN_RANK);
+		boardPositionMap.put(B + TWO, CAPTAIN_RANK);
+		boardPositionMap.put(C + TWO, ENGINEER_RANK);
+		boardPositionMap.put(D + TWO, LANDMINE_RANK);
+		boardPositionMap.put(E + TWO, ENGINEER_RANK);
+		boardPositionMap.put(A + THREE, MAJOR_GENERAL_RANK);
+		boardPositionMap.put(B + THREE, CAMP);
+		boardPositionMap.put(C + THREE, PLATOON_COMMANDAR_RANK);
+		boardPositionMap.put(D + THREE, CAMP);
+		boardPositionMap.put(E + THREE, FIELD_MARSHELL_RANK);
+		boardPositionMap.put(A + FOUR, COLONEL_RANK);
+		boardPositionMap.put(B + FOUR, ENGINEER_RANK);
+		boardPositionMap.put(C + FOUR, CAMP);
+		boardPositionMap.put(D + FOUR, MAJOR_RANK);
+		boardPositionMap.put(E + FOUR, COLONEL_RANK);
+		boardPositionMap.put(A + FIVE, BOMB_RANK);
+		boardPositionMap.put(B + FIVE, CAMP);
+		boardPositionMap.put(C + FIVE, GENERAL_RANK);
+		boardPositionMap.put(D + FIVE, CAMP);
+		boardPositionMap.put(E + FIVE, BOMB_RANK);
+		boardPositionMap.put(A + SIX, PLATOON_COMMANDAR_RANK);
+		boardPositionMap.put(B + SIX, BRIGADIER_GENERAL_RANK);
+		boardPositionMap.put(C + SIX, MAJOR_GENERAL_RANK);
+		boardPositionMap.put(D + SIX, BRIGADIER_GENERAL_RANK);
+		boardPositionMap.put(E + SIX, PLATOON_COMMANDAR_RANK);		
 	}
 	
 	/**
@@ -129,13 +129,13 @@ public class InitialConfiguration {
 			for (int column = 1; column <= 6; column++){
 				
 				// if it is a camp position do not print
-				if (boardPosition.get(row + "" + column + "")
+				if (boardPositionMap.get(row + "" + column + "")
 						.equalsIgnoreCase(CAMP))
 					continue;				
 				// prints the position
 				System.out.print(LEFT_PARENTHESIS + 
 						(row + "" + column + "") + " " + 
-						boardPosition.get(row + "" + column + "") + 
+						boardPositionMap.get(row + "" + column + "") + 
 						RIGHT_PARENTHESIS);
 			}
 		}
@@ -146,7 +146,7 @@ public class InitialConfiguration {
 	 * @return Map
 	 */
 	public Map getInitialConfiguration(){
-		return boardPosition;
+		return boardPositionMap;
 	}
 
 }

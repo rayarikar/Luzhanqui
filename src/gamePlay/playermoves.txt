@@ -1,0 +1,31 @@
+R2P:-
+(init 1 time/move 10.00)
+Player1 to refree:
+	plz refer doc
+
+
+(go 1) - Refree to player1
+(C5 D5) - player1 to refree
+(outcome C5 D5) - Refree to player1
+(outcome A7 B8) - Refree to player1
+(go 1) - Refree to player1
+(C3 C4) - Player to Refree
+(outcome C3 C4) - R2P
+(go 1) - R2P
+(outcome > C7 C6) - R2P
+(go 1) - R2P
+(B6 C6) - P2R
+(outcome > B6 C6) - R2P
+(outcome D9 D8) - R2P
+(go 1) - P2R
+(C3 C4) - P2R
+(outcome C3 C4) - R2P
+(outcome C8 C9) - R2P
+(go 1) - R2P
+(C6 C8) -p2r
+(outcome C6 C8) -r2p
+
+
+
+
+

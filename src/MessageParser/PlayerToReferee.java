@@ -1,5 +1,5 @@
 package MessageParser;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,12 +16,15 @@ Player to Referee message format
 <piece>     ::=  F | L | B | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 <move>      ::=  ( <position> <position> )
 
-**/
+ **/
 public class PlayerToReferee {	
-	
+
 	private final String LEFT_PARENTHESIS = "(";
 	private final String RIGHT_PARENTHESIS = ")";
-	
+	private final String LESS_THAN = "<";
+	private final String GREATER_THAN = ">";
+	private final String EQUAL = "=";
+
 	/**
 	 * this method returns the initial configuration Map
 	 * @return Map
@@ -30,7 +33,7 @@ public class PlayerToReferee {
 		InitialConfiguration init = new InitialConfiguration();
 		return init.getInitialConfiguration();
 	}
-	
+
 	/**
 	 * this method prints the board configuration
 	 * on the console
@@ -55,29 +58,40 @@ public class PlayerToReferee {
 			}
 		}
 	}
-	
-	
+
+
 	/**
-	 * this method sends the move to referee and 
-	 * returns the modified board position
-	 * @param currentBoardConfig
+	 * prints the move sent to referee
 	 * @param positionOne
 	 * @param positionTwo
+	 */
+	public void sendMoveToReferee(String positionOne, String positionTwo){
+		String move = LEFT_PARENTHESIS + positionOne + " " + positionTwo + RIGHT_PARENTHESIS;
+		System.out.println("\n\nMove sent to referee: " + move);
+	}
+
+	/**
+	 * this method processes the move sent to referee once the referee
+	 * gives the <outcome> message and 
+	 * returns the modified board position
+	 * @param currentBoardConfig
+	 * @param outcomes
 	 * @return Map / null
 	 */
-	public Map sendMoveToReferee(Map currentBoardConfig, String positionOne, String positionTwo){
-		Map<String, String> modifiedMap = makeMove(currentBoardConfig, positionOne, positionTwo);
+	public Map processMoveSentToReferee(Map currentBoardConfig, List outcomes){
+		Map<String, String> modifiedMap = makeMove(currentBoardConfig, outcomes);
 		if (modifiedMap != null){
-			String move = LEFT_PARENTHESIS + positionOne + " " + positionTwo + RIGHT_PARENTHESIS;
+			String move = LEFT_PARENTHESIS + outcomes.get(outcomes.size() - 2).toString() +
+					" " + outcomes.get(outcomes.size() - 1).toString() + RIGHT_PARENTHESIS;
 			System.out.println("\n\nMove made: " + move);
 			return modifiedMap;
 		}
 		else {
-			System.out.println("Invalid move (" + positionOne.toString() + " " + positionTwo.toString() + ")");
+			System.out.println("Invalid moves");
 			return null;
 		}
 	}
-	
+
 	/**
 	 * this method takes in the positions to move and moves the 
 	 * player from position 1 to 2. Returns the modified board 
@@ -87,19 +101,42 @@ public class PlayerToReferee {
 	 * @param positionTwo
 	 * @return Map / null
 	 */
-	private Map makeMove(Map currentBoardConfig, String positionOne, String positionTwo){
-		
-		if (Utility.isValidPosition(positionOne) 
-				&& Utility.isValidPosition(positionTwo)){
-			String rankOfPlayer = 
-					currentBoardConfig.get(positionOne.toUpperCase()).toString();
-			currentBoardConfig.put(positionTwo, rankOfPlayer);
-			currentBoardConfig.remove(positionOne.toString());
-			return currentBoardConfig;
-		}
-		else{
+	private Map makeMove(Map currentBoardConfig, List outcomes){
+		String positionOne = outcomes.get(outcomes.size() - 2).toString();
+		String positionTwo = outcomes.get(outcomes.size() - 1).toString();
+
+		if ( !Utility.isValidPosition(positionOne) 
+				|| !Utility.isValidPosition(positionTwo) || outcomes.size() > 4){
 			return null;
 		}
-	}	
+		// if the list size is 3 that means its (outcome <move>) message
+		if (outcomes.size() == 3){
+			return modifyBoardPositions(currentBoardConfig, positionOne, positionTwo);
+		}
+		// if list size is 4 that means it is (outcome <compare> <move>) message
+		if (outcomes.size() == 4) {
+			// if the <outcome> message is {<, =} that means we remove our piece from board
+			if (outcomes.get(1).toString().equals(LESS_THAN) || 
+					outcomes.get(1).toString().equals(EQUAL))
+				return removeOurPieceFromBoard(currentBoardConfig, positionOne, positionTwo);
+			// if the <outcome> message is {>} that means we move our piece from pos1 to pos2
+			else if (outcomes.get(1).toString().equals(GREATER_THAN))
+				return modifyBoardPositions(currentBoardConfig, positionOne, positionTwo);
+		}
+		return null;
+	}
+
+	private Map modifyBoardPositions(Map currentBoardConfig, String positionOne, String positionTwo){
+		String rankOfPlayer = 
+				currentBoardConfig.get(positionOne.toUpperCase()).toString();
+		currentBoardConfig.put(positionTwo, rankOfPlayer);
+		currentBoardConfig.remove(positionOne.toString());
+		return currentBoardConfig;
+	}
+
+	private Map removeOurPieceFromBoard(Map currentBoardConfig, String positionOne, String positionTwo){
+		currentBoardConfig.remove(positionOne);
+		return currentBoardConfig;
+	}
 
 }

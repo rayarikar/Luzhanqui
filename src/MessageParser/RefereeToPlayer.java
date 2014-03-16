@@ -1,7 +1,6 @@
 package MessageParser;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,13 +14,13 @@ public class RefereeToPlayer {
 	private static Pattern pattern;
 	private static Matcher matcher;
 	private final String REGEX = "^\\d+$";
-	private final String INIT = "init";
+	public final String INIT = "init";
 	private final String TIME_MOVE = "time/move";
 	private final String GAME_END = "end";
-	private final String GO = "go";
+	public final String GO = "go";
 	private final String FLAG = "flag";
 	private final String ILLEGAL = "illegal";
-	private final String OUTCOME = "outcome";
+	public final String OUTCOME = "outcome";
 	private final String DOT = ".";
 	private final char LEFT_PARENTHESIS = '(';
 	private final char RIGHT_PARENTHESIS = ')';
@@ -295,7 +294,7 @@ public class RefereeToPlayer {
 		else{
 			List moveList = 
 			checkForPositions(innerMessage.toString().trim().
-					substring(1, innerMessage.length() - 1));
+					substring(0, innerMessage.length()));
 			if (moveList.size() == 3)
 				return moveList;
 			else
