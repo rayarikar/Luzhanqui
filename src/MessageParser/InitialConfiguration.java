@@ -33,6 +33,8 @@ public class InitialConfiguration {
 	private static final String FLAG_RANK="F"; 
 	private static final String BOMB_RANK="B"; 
 	private static final String LANDMINE_RANK="L";
+	public static final String EMPTY_POSITION="false";
+	public static final String FILLED_POSITION="true";
 	// constants for position
 	private static final String A = "A";
 	private static final String B = "B";
@@ -45,6 +47,12 @@ public class InitialConfiguration {
 	private static final String FOUR = "4";
 	private static final String FIVE = "5";
 	private static final String SIX = "6";
+	private static final String SEVEN = "7";
+	private static final String EIGHT = "8";
+	private static final String NINE = "9";
+	private static final String  TEN = "10";
+	private static final String  ELEVEN = "11";
+	private static final String  TWVELE  = "12";
 	// constants for round parenthesis
 	private static final String LEFT_PARENTHESIS = "(";
 	private static final String RIGHT_PARENTHESIS = ")";
@@ -115,7 +123,14 @@ public class InitialConfiguration {
 		boardPositionMap.put(B + SIX, BRIGADIER_GENERAL_RANK);
 		boardPositionMap.put(C + SIX, MAJOR_GENERAL_RANK);
 		boardPositionMap.put(D + SIX, BRIGADIER_GENERAL_RANK);
-		boardPositionMap.put(E + SIX, PLATOON_COMMANDAR_RANK);		
+		boardPositionMap.put(E + SIX, PLATOON_COMMANDAR_RANK);
+		boardPositionMap.put(E + SIX, PLATOON_COMMANDAR_RANK);
+		boardPositionMap.put(A + SEVEN, FILLED_POSITION);
+		boardPositionMap.put(B + SEVEN, FILLED_POSITION);
+		boardPositionMap.put(C + SEVEN, FILLED_POSITION);
+		boardPositionMap.put(D + SEVEN, FILLED_POSITION);
+		boardPositionMap.put(E + SEVEN, FILLED_POSITION);
+		
 	}
 	
 	/**
