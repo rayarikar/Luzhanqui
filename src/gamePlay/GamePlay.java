@@ -40,7 +40,7 @@ public class GamePlay {
 	public void processCommand(String command){
 		List values = r2p.processRefereeMessage(command);
 		// sane check for referee message
-		if (!values.isEmpty()){
+		if (!values.isEmpty()){			
 			if (values.get(0).equals(r2p.INIT))
 				executeInitCommand(values.get(1).toString());
 			if (values.get(0).equals(r2p.GO) && values.get(1).toString().equals(r2p.PLAYER_NUMBER))
@@ -55,7 +55,7 @@ public class GamePlay {
 	}
 
 	/**
-	 * Execures the init command and returns the initial config
+	 * Executes the init command and returns the initial config
 	 * @param playerNumber
 	 */
 	private void executeInitCommand(String playerNumber){

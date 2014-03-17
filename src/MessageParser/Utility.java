@@ -71,6 +71,25 @@ public class Utility {
 	}
 	
 	/**
+	 * if the first position in a move is empty or the headquarters then
+	 * return false
+	 * @param boardConfiguration
+	 * @param positionOne
+	 * @param positionTwo
+	 * @return boolean
+	 */
+	public static boolean isValidMove(Map boardConfiguration, String positionOne, String positionTwo){
+		// if the value corresponding to position 1 is false return false
+		if (boardConfiguration.get(positionOne).equals(InitialConfiguration.EMPTY_POSITION))
+			return false;
+		// if the first position corresponds to B1, D1, B12 or D12 return false
+		if (positionOne.equals("B1") || positionOne.equals("D1") || 
+				positionOne.equals("D1") || positionOne.equals("D12"))
+			return false;
+		return true;
+	}
+	
+	/**
 	 * removes all the white spaces at the begining of the StringBuilder
 	 * @param message
 	 * @return StringBuilder
@@ -104,7 +123,7 @@ public class Utility {
 		}
 		positions.add(tempString);
 		return positions;	
-	}
+	}	
 	
 	/**
 	 * returns map of all possible position from each position

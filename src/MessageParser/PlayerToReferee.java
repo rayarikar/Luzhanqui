@@ -110,7 +110,8 @@ public class PlayerToReferee {
 		String positionTwo = outcomes.get(outcomes.size() - 1).toString();
 
 		if ( !Utility.isValidPosition(positionOne) 
-				|| !Utility.isValidPosition(positionTwo) || outcomes.size() > 4){
+				|| !Utility.isValidPosition(positionTwo) || outcomes.size() > 4
+				|| !Utility.isValidMove(currentBoardConfig, positionOne, positionTwo)){
 			return null;
 		}
 		// if the list size is 3 that means its (outcome <move>) message
