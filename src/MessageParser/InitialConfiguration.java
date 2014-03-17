@@ -52,7 +52,7 @@ public class InitialConfiguration {
 	private static final String NINE = "9";
 	private static final String  TEN = "10";
 	private static final String  ELEVEN = "11";
-	private static final String  TWVELE  = "12";
+	private static final String  TWELVE  = "12";
 	// constants for round parenthesis
 	private static final String LEFT_PARENTHESIS = "(";
 	private static final String RIGHT_PARENTHESIS = ")";
@@ -130,7 +130,31 @@ public class InitialConfiguration {
 		boardPositionMap.put(C + SEVEN, FILLED_POSITION);
 		boardPositionMap.put(D + SEVEN, FILLED_POSITION);
 		boardPositionMap.put(E + SEVEN, FILLED_POSITION);
-		
+		boardPositionMap.put(A + EIGHT, FILLED_POSITION);
+		boardPositionMap.put(B + EIGHT, CAMP);
+		boardPositionMap.put(C + EIGHT, FILLED_POSITION);
+		boardPositionMap.put(D + EIGHT, CAMP);
+		boardPositionMap.put(E + EIGHT, FILLED_POSITION);
+		boardPositionMap.put(A + NINE, FILLED_POSITION);
+		boardPositionMap.put(B + NINE, FILLED_POSITION);
+		boardPositionMap.put(C + NINE, CAMP);
+		boardPositionMap.put(D + NINE, FILLED_POSITION);
+		boardPositionMap.put(E + NINE, FILLED_POSITION);
+		boardPositionMap.put(A + TEN, FILLED_POSITION);
+		boardPositionMap.put(B + TEN, CAMP);
+		boardPositionMap.put(C + TEN, FILLED_POSITION);
+		boardPositionMap.put(D + TEN, CAMP);
+		boardPositionMap.put(E + TEN, FILLED_POSITION);
+		boardPositionMap.put(A + ELEVEN, FILLED_POSITION);
+		boardPositionMap.put(B + ELEVEN, FILLED_POSITION);
+		boardPositionMap.put(C + ELEVEN, FILLED_POSITION);
+		boardPositionMap.put(D + ELEVEN, FILLED_POSITION);
+		boardPositionMap.put(E + ELEVEN, FILLED_POSITION);
+		boardPositionMap.put(A + TWELVE, FILLED_POSITION);
+		boardPositionMap.put(B + TWELVE, FILLED_POSITION);
+		boardPositionMap.put(C + TWELVE, FILLED_POSITION);
+		boardPositionMap.put(D + TWELVE, FILLED_POSITION);
+		boardPositionMap.put(E + TWELVE, FILLED_POSITION);	
 	}
 	
 	/**
