@@ -126,6 +126,13 @@ public class PlayerToReferee {
 		return null;
 	}
 
+	/**
+	 * modifies the position of the Map.
+	 * @param currentBoardConfig
+	 * @param positionOne
+	 * @param positionTwo
+	 * @return Map
+	 */
 	private Map modifyBoardPositions(Map currentBoardConfig, String positionOne, String positionTwo){
 		String rankOfPlayer = 
 				currentBoardConfig.get(positionOne.toUpperCase()).toString();
@@ -134,6 +141,13 @@ public class PlayerToReferee {
 		return currentBoardConfig;
 	}
 
+	/**
+	 * removes the pieces from the Map.
+	 * @param currentBoardConfig
+	 * @param positionOne
+	 * @param positionTwo
+	 * @return Map
+	 */
 	private Map removeOurPieceFromBoard(Map currentBoardConfig, String positionOne, String positionTwo){
 		currentBoardConfig.remove(positionOne);
 		return currentBoardConfig;
