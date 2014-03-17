@@ -17,7 +17,7 @@ public class ReadReferee {
 	 * @throws FileNotFoundException
 	 */
 	protected List getCommands() throws FileNotFoundException{
-		Scanner reader = new Scanner(new File("E:/Android Work/GitHub/Luzhanqui/src/gamePlay/RefereeMoves.txt"));
+		Scanner reader = new Scanner(new File("RefereeMoves.txt"));
 		List<String> lines = new ArrayList<String>();
 		while (reader.hasNext()) {
 			lines.add(reader.nextLine());

@@ -33,8 +33,8 @@ public class GamePlay {
 		// sane check for referee message
 		if (!values.isEmpty()){
 			if (values.get(0).equals(r2p.INIT))
-				executeInitCommand();
-			if (values.get(0).equals(r2p.GO))
+				executeInitCommand(values.get(1).toString());
+			if (values.get(0).equals(r2p.GO) && values.get(1).toString().equals(r2p.PLAYER_NUMBER))
 				p2r.sendMoveToReferee(goPositions.remove(0), goPositions.remove(0));
 			if (values.get(0).equals(r2p.OUTCOME)){
 				currentBoardConfig = p2r.processMoveSentToReferee(currentBoardConfig, values);
@@ -45,8 +45,9 @@ public class GamePlay {
 			System.out.println("Invalid command by referee!");
 	}
 
-	private void executeInitCommand(){
+	private void executeInitCommand(String playerNumber){
 		currentBoardConfig = p2r.getInitialConfiguration();
+		r2p.setPlayerNumber(playerNumber);
 		p2r.printBoardPositionsToStandardOutput(currentBoardConfig);
 	}
 }

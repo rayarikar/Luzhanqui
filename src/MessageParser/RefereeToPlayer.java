@@ -27,6 +27,7 @@ public class RefereeToPlayer {
 	private final char LESS_THAN = '<';
 	private final char GREATER_THAN = '>';
 	private final char EQUAL = '=';
+	public String PLAYER_NUMBER = "";
 	final char ZERO = '0';
 	final char ONE = '1';
 	private final char TWO = '2';
@@ -47,6 +48,15 @@ public class RefereeToPlayer {
 	private boolean isValidDigit(String input){
 		matcher = pattern.matcher(input);
 		return matcher.find();
+	}
+	
+	/**
+	 * Sets the player number send by referee	
+	 * @param message
+	 * @return void
+	 */
+	public void setPlayerNumber(String number){
+		PLAYER_NUMBER = number;
 	}
 
 	/**
