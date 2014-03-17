@@ -43,7 +43,7 @@ public class Utility {
 	 * <piece>     ::=  F | L | B | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 	 * @return Map
 	 */
-	public static Map<String, String> getPieces(){
+	public static Map<String, String> getPiecesMap(){
 		Map<String, String> pieceMap = new HashMap<String, String>();
 		for (int piecePos = 1; piecePos < 10; piecePos++){
 			pieceMap.put("" + piecePos, "" + piecePos);

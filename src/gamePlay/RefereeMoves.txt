@@ -1,6 +1,7 @@
 (init 1 time/move 10.00)
 (go 1)
 (outcome C5 D5)
+(go 2)
 (outcome A7 B8)
 (go 1)
 (outcome C3 C4)
