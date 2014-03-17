@@ -56,8 +56,8 @@ public class Message {
 				game.processCommand(commands.remove(0).toString());
 //				System.out.println("\n\nThe index is : " + index);
 				index++;
-				if (index == 3)
-					break;
+//				if (index == 5)
+//					break;
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

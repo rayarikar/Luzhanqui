@@ -304,7 +304,7 @@ public class RefereeToPlayer {
 		else{
 			List moveList = 
 			checkForPositions(innerMessage.toString().trim().
-					substring(0, innerMessage.length()));
+					substring(1, innerMessage.length() - 1));
 			if (moveList.size() == 3)
 				return moveList;
 			else

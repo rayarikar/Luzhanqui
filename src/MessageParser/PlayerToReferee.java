@@ -43,10 +43,14 @@ public class PlayerToReferee {
 			System.out.println();
 			for (int column = 1; column <= 12; column++){
 				try{
-					// if it is a camp position do not print
-					if (boardPosition.get(row + "" + column + "")
-							.equalsIgnoreCase(InitialConfiguration.CAMP))
-						continue;				
+//					// if it is a camp position do not print
+//					if (boardPosition.get(row + "" + column + "")
+//							.equalsIgnoreCase(InitialConfiguration.CAMP) ||
+//							boardPosition.get(row + "" + column + "")
+//							.equalsIgnoreCase(InitialConfiguration.EMPTY_POSITION) ||
+//							boardPosition.get(row + "" + column + "")
+//							.equalsIgnoreCase(InitialConfiguration.FILLED_POSITION))
+//						continue;				
 					// prints the position
 					System.out.print(LEFT_PARENTHESIS + 
 							(row + "" + column + "") + " " + 
@@ -115,13 +119,15 @@ public class PlayerToReferee {
 		}
 		// if list size is 4 that means it is (outcome <compare> <move>) message
 		if (outcomes.size() == 4) {
-			// if the <outcome> message is {<, =} that means we remove our piece from board
-			if (outcomes.get(1).toString().equals(LESS_THAN) || 
-					outcomes.get(1).toString().equals(EQUAL))
-				return removeOurPieceFromBoard(currentBoardConfig, positionOne, positionTwo);
+			// if the <outcome> message is {<} that means we remove our piece from board
+			if (outcomes.get(1).toString().equals(LESS_THAN))
+				return updateOurPiecePositionOnBoard(currentBoardConfig, positionOne, positionTwo);
 			// if the <outcome> message is {>} that means we move our piece from pos1 to pos2
 			else if (outcomes.get(1).toString().equals(GREATER_THAN))
 				return modifyBoardPositions(currentBoardConfig, positionOne, positionTwo);
+			// if the <outcome> message is {=} that means we remove both the pieces
+			else if (outcomes.get(1).toString().equals(EQUAL))
+				return updateBothPlayerPositions(currentBoardConfig, positionOne, positionTwo);
 		}
 		return null;
 	}
@@ -137,7 +143,7 @@ public class PlayerToReferee {
 		String rankOfPlayer = 
 				currentBoardConfig.get(positionOne.toUpperCase()).toString();
 		currentBoardConfig.put(positionTwo, rankOfPlayer);
-		currentBoardConfig.remove(positionOne.toString());
+		currentBoardConfig.put(positionOne.toString(), InitialConfiguration.EMPTY_POSITION);
 		return currentBoardConfig;
 	}
 
@@ -148,8 +154,22 @@ public class PlayerToReferee {
 	 * @param positionTwo
 	 * @return Map
 	 */
-	private Map removeOurPieceFromBoard(Map currentBoardConfig, String positionOne, String positionTwo){
-		currentBoardConfig.remove(positionOne);
+	private Map updateOurPiecePositionOnBoard(Map currentBoardConfig, String positionOne, String positionTwo){
+		currentBoardConfig.put(positionOne, InitialConfiguration.EMPTY_POSITION);
+		return currentBoardConfig;
+	}
+	
+	
+	/**
+	 * removes both the pieces from the map
+	 * @param currentBoardConfig
+	 * @param positionOne
+	 * @param positionTwo
+	 * @return Map
+	 */
+	private Map updateBothPlayerPositions(Map currentBoardConfig, String positionOne, String positionTwo){
+		currentBoardConfig.put(positionOne.toString(), InitialConfiguration.EMPTY_POSITION);
+		currentBoardConfig.put(positionTwo.toString(), InitialConfiguration.EMPTY_POSITION);
 		return currentBoardConfig;
 	}
 

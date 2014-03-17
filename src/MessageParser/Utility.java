@@ -56,7 +56,7 @@ public class Utility {
 	
 	
 	/**
-	 * returns true if the position is valid. Else returns false
+	 * returns true if the position is valid and not a camp. Else returns false
 	 * @param position
 	 * @return
 	 */
@@ -104,5 +104,17 @@ public class Utility {
 		}
 		positions.add(tempString);
 		return positions;	
+	}
+	
+	/**
+	 * returns map of all possible position from each position
+	 * @return Map
+	 */
+	public static Map<String, List<String>> getAllPossibleMovesMap(){
+		List<String> allPossibleMoves = new ArrayList<String>();
+		Map<String, List<String>> allMovesMap = new HashMap<String, List<String>>();
+		
+		
+		return allMovesMap;
 	}
 }

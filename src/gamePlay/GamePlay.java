@@ -15,6 +15,11 @@ public class GamePlay {
 	Map<String, String> currentBoardConfig;
 
 
+	/**
+	 * returns the list of commands
+	 * @return List of Commands
+	 * @throws FileNotFoundException
+	 */
 	public List readCommands() throws FileNotFoundException{
 		ReadReferee readRef = new ReadReferee();
 		List commands = readRef.getCommands();
@@ -28,6 +33,10 @@ public class GamePlay {
 	List<String> goPositions = new ArrayList(Arrays.asList("C5", "D5", "C3", "C4", "B6", "C6", "C3", "C4", "C6", "C8"));
 
 
+	/**
+	 * processes the referee command and prints the output
+	 * @param command
+	 */
 	public void processCommand(String command){
 		List values = r2p.processRefereeMessage(command);
 		// sane check for referee message
@@ -45,6 +54,10 @@ public class GamePlay {
 			System.out.println("Invalid command by referee!");
 	}
 
+	/**
+	 * Execures the init command and returns the initial config
+	 * @param playerNumber
+	 */
 	private void executeInitCommand(String playerNumber){
 		currentBoardConfig = p2r.getInitialConfiguration();
 		r2p.setPlayerNumber(playerNumber);
