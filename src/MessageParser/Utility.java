@@ -64,6 +64,8 @@ public class Utility {
 		HashMap<String, String> validPositionMap = (HashMap<String, String>) Utility.getPositionMap();
 		try{
 			String value = validPositionMap.get(position.toString());
+			if (value == null)
+				return false;
 			return true;
 		} catch (Exception e){
 			return false;

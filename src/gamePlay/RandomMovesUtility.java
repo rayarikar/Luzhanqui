@@ -16,12 +16,36 @@ import MessageParser.Utility;
  */
 public class RandomMovesUtility {
 
+
+	/**
+	 * method which generates a list of source and destination position.
+	 * Random moves are generated this way. 
+	 * 
+	 * TODO - This is a very crude
+	 * implementation of random move generator. Need to modify
+	 * it later on. The time complexity of the current method is 
+	 * too high
+	 * 
+	 * @param currentBoardConfig
+	 * @return List
+	 */
+	public static List<String> getRandomMove(Map<String, String> currentBoardConfig){
+		List<String> moves = new ArrayList<String>();
+		moves = getSourcePositionForMove(currentBoardConfig);
+		// gets the moves until the moves are valid
+		while (moves.get(1).toString().equals("")){
+			moves = getSourcePositionForMove(currentBoardConfig);
+		}
+		return moves;
+	}
+
+
 	/**
 	 * generates a random position which suggests move to be made by us
 	 * @param currentBoardConfig
 	 * @return List
 	 */
-	public String getSourcePositionForMove(Map<String, String> currentBoardConfig){
+	public static List<String> getSourcePositionForMove(Map<String, String> currentBoardConfig){
 		List<String> possiblePositions = new ArrayList<String>();
 		String key = "";
 		for (int row = 1; row <=12; row++){
@@ -36,29 +60,32 @@ public class RandomMovesUtility {
 						currentBoardConfig.get(key).equals(InitialConfiguration.FILLED_POSITION) ||
 						currentBoardConfig.get(key).equals(InitialConfiguration.CAMP))
 					continue;
-				possiblePositions.add(currentBoardConfig.get(key));
+				possiblePositions.add(key);
 			}
 		}
-		
+
 		Random rand = new Random();
 		int randomPos = rand.nextInt(possiblePositions.size());
 		// we get out players position at this point
-		String sourcePos = possiblePositions.get(randomPos).toString();
-		
+		String sourcePos = possiblePositions.get(randomPos);
+		//		String sourcePos = "B1";
+		//		System.out.println(sourcePos);
+
 		List<String> possibleMoves = Utility.getAllPossibleMovesMap().get(sourcePos);
 		String destinationPos = "";
-		while (destinationPos != ""){
-			for (String eachPos : possibleMoves){
-				// move the piece only if it is a head-quarter / true / false / camp
-//				@TODO work on this
+		for (String eachPos : possibleMoves){
+			// move the piece only if it is a head-quarter / true / false / camp
+			if ( currentBoardConfig.get(eachPos).equals(InitialConfiguration.EMPTY_POSITION) ||
+					currentBoardConfig.get(eachPos).equals(InitialConfiguration.FILLED_POSITION) ||
+					currentBoardConfig.get(eachPos).equals(InitialConfiguration.CAMP)){
+				destinationPos = eachPos;
+				break;
 			}
 		}
-		
-		return sourcePos;
+
+		List<String> moves = new ArrayList<String>();
+		moves.add(sourcePos);
+		moves.add(destinationPos);
+		return moves;
 	}
-	
-	
-//	public String getDestinationPositionForMove(Map<String, String> currentBoardConfig, String sourcePos){
-//		
-//	}
 }

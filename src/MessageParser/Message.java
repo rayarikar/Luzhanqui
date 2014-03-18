@@ -1,5 +1,6 @@
 package MessageParser;
 import gamePlay.GamePlay;
+import gamePlay.RandomMovesUtility;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -19,7 +20,8 @@ public class Message {
 			}
 			
 			System.out.println();
-			System.out.println(Utility.getAllPossibleMovesMap());
+//			System.out.println(Utility.getAllPossibleMovesMap());
+			System.out.println(RandomMovesUtility.getRandomMove((new PlayerToReferee()).getInitialConfiguration()));
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
