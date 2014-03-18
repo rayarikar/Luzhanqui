@@ -133,6 +133,233 @@ public class Utility {
 		List<String> allPossibleMoves = new ArrayList<String>();
 		Map<String, List<String>> allMovesMap = new HashMap<String, List<String>>();
 		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.ONE);
+		allMovesMap.put(InitialConfiguration.A + InitialConfiguration.ONE, allPossibleMoves);
+		allPossibleMoves.clear();
+	
+		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.ONE, null);
+		
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.ONE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.ONE);
+		allMovesMap.put(InitialConfiguration.C + InitialConfiguration.ONE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		
+		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.ONE, null);
+		
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.ONE);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.TWO);
+		allMovesMap.put(InitialConfiguration.E + InitialConfiguration.ONE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.ONE);
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.THREE);
+//		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.FOUR);
+//		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.FIVE);
+//		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.SIX);
+//		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.SEVEN);
+//		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.EIGHT);
+//		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.NINE);
+//		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.TEN);
+//		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.ELEVEN);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.THREE);
+		allMovesMap.put(InitialConfiguration.A + InitialConfiguration.TWO, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.ONE);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.TWO);
+		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.TWO, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.ONE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.THREE);
+		allMovesMap.put(InitialConfiguration.C + InitialConfiguration.TWO, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.ONE);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.TWO);
+		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.TWO, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.ONE);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.THREE);
+		allMovesMap.put(InitialConfiguration.E + InitialConfiguration.TWO, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.THREE);
+		allMovesMap.put(InitialConfiguration.A + InitialConfiguration.THREE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FOUR);
+		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.THREE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.TWO);
+		allMovesMap.put(InitialConfiguration.C + InitialConfiguration.THREE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.FOUR);
+		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.THREE, allPossibleMoves);
+		allPossibleMoves.clear();
+	
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.TWO);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.FOUR);
+		allMovesMap.put(InitialConfiguration.E + InitialConfiguration.THREE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FIVE);
+		allMovesMap.put(InitialConfiguration.A + InitialConfiguration.FOUR, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FOUR);
+		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.FOUR, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FIVE);
+		allMovesMap.put(InitialConfiguration.C + InitialConfiguration.FOUR, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.FOUR);
+		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.FOUR, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.THREE);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.FIVE);
+		allMovesMap.put(InitialConfiguration.E + InitialConfiguration.FOUR, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.SIX);
+		allMovesMap.put(InitialConfiguration.A + InitialConfiguration.FIVE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.SIX);
+		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.FIVE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FIVE);
+		allMovesMap.put(InitialConfiguration.C + InitialConfiguration.FIVE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.SIX);
+		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.FIVE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.FOUR);
+		allMovesMap.put(InitialConfiguration.E + InitialConfiguration.FIVE, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.SEVEN);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.SIX);
+		allMovesMap.put(InitialConfiguration.A + InitialConfiguration.SIX, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FIVE);	
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.SIX);	
+		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.SIX, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.SIX);	
+		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.FIVE);	
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.SEVEN);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.SIX);
+		allMovesMap.put(InitialConfiguration.C + InitialConfiguration.SIX, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.C + InitialConfiguration.SIX);	
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FIVE);	
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.SIX);	
+		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.SIX, allPossibleMoves);
+		allPossibleMoves.clear();
+		
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.SIX);	
+		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.FIVE);	
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.FIVE);	
+		allPossibleMoves.add(InitialConfiguration.E + InitialConfiguration.SEVEN);	
+		allMovesMap.put(InitialConfiguration.E + InitialConfiguration.SIX, allPossibleMoves);
+		allPossibleMoves.clear();
 		
 		return allMovesMap;
 	}
