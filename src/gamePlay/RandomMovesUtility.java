@@ -15,7 +15,7 @@ public class RandomMovesUtility {
 	public List<String> getRandomMoves(Map<String, String> currentBoardConfig){
 		List<String> randomMoves = new ArrayList<String>();
 		String key = "";
-//		for (String key : randomMoves.
+//		for (String key : currentBoardConfig.keySet())
 		
 		
 		
