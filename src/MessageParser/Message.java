@@ -17,6 +17,10 @@ public class Message {
 			while ( !commands.isEmpty()){
 				game.processCommand(commands.remove(0).toString());
 			}
+			
+			System.out.println();
+			System.out.println(Utility.getAllPossibleMovesMap());
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
