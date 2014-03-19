@@ -73,7 +73,9 @@ public class GamePlay {
 	private void executeInitCommand(String playerNumber){
 		currentBoardConfig = p2r.getInitialConfiguration();
 		r2p.setPlayerNumber(playerNumber);
+		System.out.print(p2r.LEFT_PARENTHESIS);
 		p2r.printInitConfigToStandardOutput(currentBoardConfig);
+		System.out.print(p2r.RIGHT_PARENTHESIS);
 	}
 	
 	/**

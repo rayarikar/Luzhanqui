@@ -19,8 +19,8 @@ Player to Referee message format
  **/
 public class PlayerToReferee {	
 
-	private final String LEFT_PARENTHESIS = "(";
-	private final String RIGHT_PARENTHESIS = ")";
+	public final String LEFT_PARENTHESIS = "(";
+	public final String RIGHT_PARENTHESIS = ")";
 	private final String LESS_THAN = "<";
 	private final String GREATER_THAN = ">";
 	private final String EQUAL = "=";

@@ -17,14 +17,12 @@ public class Message {
 		try {
 			// List commands = game.readCommands();			
 			Scanner reader = new Scanner(System.in);
+			List<String> commands = new ArrayList<String>();
+
 			while (reader.hasNext()){
-
-				List<String> commands = new ArrayList<String>();
 				commands.add(reader.nextLine());
-
 				while ( !commands.isEmpty()){
 					game.processCommand(commands.remove(0).toString());
-					System.out.println();
 				}
 			}
 

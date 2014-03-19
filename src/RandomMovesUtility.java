@@ -49,14 +49,15 @@ public class RandomMovesUtility {
 		for (int row = 1; row <=12; row++){
 			for (char col = 'A'; col <= 'E'; col++){
 				key = "" + col + row;
-				// if the position is head-quarter / false / true / camp then ignore
+				// if the position is head-quarter / false / true / camp / land-mine then ignore
 				if (currentBoardConfig.get(key).equals("B2") || 
 						currentBoardConfig.get(key).equals("D4") ||
 						currentBoardConfig.get(key).equals("B12") ||
 						currentBoardConfig.get(key).equals("D12") ||
 						currentBoardConfig.get(key).equals(InitialConfiguration.EMPTY_POSITION) ||
 						currentBoardConfig.get(key).equals(InitialConfiguration.FILLED_POSITION) ||
-						currentBoardConfig.get(key).equals(InitialConfiguration.CAMP))
+						currentBoardConfig.get(key).equals(InitialConfiguration.CAMP) ||
+						currentBoardConfig.get(key).equals(InitialConfiguration.LANDMINE_RANK))
 					continue;
 				possiblePositions.add(key);
 			}
@@ -74,10 +75,12 @@ public class RandomMovesUtility {
 			if ( currentBoardConfig.get(eachPos).equals(InitialConfiguration.EMPTY_POSITION) ||
 					currentBoardConfig.get(eachPos).equals(InitialConfiguration.FILLED_POSITION) ||
 					currentBoardConfig.get(eachPos).equals(InitialConfiguration.CAMP)){
-				// we cannot attack players in opponents' camp sites
+				// we cannot attack opponents' players in ours or opponents' camp sites
 				if (currentBoardConfig.get(eachPos).equals(InitialConfiguration.FILLED_POSITION) &&
-					(eachPos.equals("B8") || eachPos.equals("B10") || eachPos.equals("C9") ||
-							eachPos.equals("D8") || eachPos.equals("D10")))
+						(eachPos.equals("B3") || eachPos.equals("B5") || eachPos.equals("C4") ||
+								eachPos.equals("D3") || eachPos.equals("D5") ||
+								eachPos.equals("B8") || eachPos.equals("B10") || eachPos.equals("C9") ||
+								eachPos.equals("D8") || eachPos.equals("D10")))
 					continue;
 				destinationPos = eachPos;
 				break;
