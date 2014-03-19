@@ -48,9 +48,20 @@ public class GamePlay {
 				currentBoardConfig = p2r.processMoveSentToReferee(currentBoardConfig, values);
 				p2r.printBoardPositionsToStandardOutput(currentBoardConfig);
 			}
+			// process flag message
+			if (values.get(0).equals(r2p.FLAG))
+				processFlagPositions(values.get(1).toString(), 
+						values.get(2).toString());
+			// process the <game_end> message
+			if (values.get(0).equals(r2p.GAME_END))
+				declareResults(values.get(1).toString(), r2p.PLAYER_NUMBER);
+			// if the referee sends illegal message then do nothing
+			if (values.get(0).equals(r2p.ILLEGAL)){
+				// do nothing
+			}
 		}
 		else
-			System.out.println("Invalid command by referee!");
+			System.out.println("\nInvalid command by referee!");
 	}
 
 	/**
@@ -61,5 +72,33 @@ public class GamePlay {
 		currentBoardConfig = p2r.getInitialConfiguration();
 		r2p.setPlayerNumber(playerNumber);
 		p2r.printBoardPositionsToStandardOutput(currentBoardConfig);
+	}
+	
+	/**
+	 * Executes the <game_end> message.
+	 * If we are the winner then exit with status 0 else with status 1
+	 */
+	private void declareResults(String winner, String playerNumber){
+		// if we are the winner end with status 0 else 1
+		if (winner.equals(playerNumber))
+		{
+			System.out.println("\nExiting with status 0");
+			System.exit(0);
+		}
+		System.out.println("\nExiting with status 1");
+		System.exit(1);
+	}
+	
+	/**
+	 * Sets the opponents' flag position
+	 * @param player
+	 * @param flagPositon
+	 */
+	private void processFlagPositions(String player, String flagPositon){
+		// if the player is opponent then only store the player number
+		if ( !player.equals(r2p.PLAYER_NUMBER)){
+			r2p.setOpponentFlagPosition(flagPositon);
+//			System.out.println("\n Opp Flag pos : " + r2p.OPPONENT_FLAG_POSITION);
+		}
 	}
 }

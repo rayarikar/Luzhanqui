@@ -16,10 +16,10 @@ public class RefereeToPlayer {
 	private final String REGEX = "^\\d+$";
 	public final String INIT = "init";
 	private final String TIME_MOVE = "time/move";
-	private final String GAME_END = "end";
+	public final String GAME_END = "end";
 	public final String GO = "go";
-	private final String FLAG = "flag";
-	private final String ILLEGAL = "illegal";
+	public final String FLAG = "flag";
+	public final String ILLEGAL = "illegal";
 	public final String OUTCOME = "outcome";
 	private final String DOT = ".";
 	private final char LEFT_PARENTHESIS = '(';
@@ -28,11 +28,13 @@ public class RefereeToPlayer {
 	private final char GREATER_THAN = '>';
 	private final char EQUAL = '=';
 	public String PLAYER_NUMBER = "";
-	final char ZERO = '0';
-	final char ONE = '1';
-	private final char TWO = '2';
+	public final char ZERO = '0';
+	public final char ONE = '1';
+	public final char TWO = '2';
+	
 	private List<Object> returnList = new ArrayList<Object>();
 	private List<Object> emptyList = new ArrayList<Object>();
+	public String OPPONENT_FLAG_POSITION = "";
 
 	// compiles the pattern defined globally
 	public RefereeToPlayer(){
@@ -57,6 +59,15 @@ public class RefereeToPlayer {
 	 */
 	public void setPlayerNumber(String number){
 		PLAYER_NUMBER = number;
+	}
+	
+	/**
+	 * Sets the opponent flag position
+	 * @param message
+	 * @return void
+	 */
+	public void setOpponentFlagPosition(String pos){
+		OPPONENT_FLAG_POSITION = pos;
 	}
 
 	/**
@@ -227,12 +238,14 @@ public class RefereeToPlayer {
 		if (Integer.parseInt(innerMessage.toString().charAt(0) +"") > 2 ||
 				Integer.parseInt(innerMessage.toString().charAt(0) +"") <= 0)
 			return emptyList;
+		String player = "" + Integer.parseInt(innerMessage.toString().charAt(0) +"");
 		innerMessage.deleteCharAt(0);
 		innerMessage = Utility.removeStartBlankChars(innerMessage);
 		String position = innerMessage.toString().substring(0, innerMessage.toString().trim().length());
 		if ( !Utility.getPositionMap().containsKey(position))
 			return emptyList;
 		returnList.add(FLAG);
+		returnList.add(player);
 		returnList.add(position);
 		return returnList;
 	}

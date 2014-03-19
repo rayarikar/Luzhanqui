@@ -17,3 +17,6 @@
 (outcome (C8 C9))
 (go 1)
 (outcome (C6 C8))
+(flag 2 C6)
+(illegal (C1 C3))
+(end 1)
