@@ -137,6 +137,7 @@ public class Utility {
 	 */
 	public static Map<String, List<String>> getAllPossibleMovesMap(){
 		List<String> allPossibleMoves = new ArrayList<String>();
+		List<String> emptyMoves = new ArrayList<String>();
 		Map<String, List<String>> allMovesMap = new HashMap<String, List<String>>();
 		
 		allPossibleMoves.add(InitialConfiguration.A + InitialConfiguration.TWO);
@@ -144,7 +145,7 @@ public class Utility {
 		allMovesMap.put(InitialConfiguration.A + InitialConfiguration.ONE, allPossibleMoves);
 	
 		allPossibleMoves = new ArrayList<String>();
-		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.ONE, null);
+		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.ONE, emptyMoves);
 		
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.B + InitialConfiguration.ONE);
@@ -154,7 +155,7 @@ public class Utility {
 		
 		
 		
-		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.ONE, null);
+		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.ONE, emptyMoves);
 		
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.D + InitialConfiguration.ONE);

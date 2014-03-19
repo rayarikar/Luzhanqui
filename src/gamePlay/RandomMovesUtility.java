@@ -68,8 +68,6 @@ public class RandomMovesUtility {
 		int randomPos = rand.nextInt(possiblePositions.size());
 		// we get out players position at this point
 		String sourcePos = possiblePositions.get(randomPos);
-		//		String sourcePos = "B1";
-		//		System.out.println(sourcePos);
 
 		List<String> possibleMoves = Utility.getAllPossibleMovesMap().get(sourcePos);
 		String destinationPos = "";
