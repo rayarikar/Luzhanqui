@@ -74,6 +74,11 @@ public class RandomMovesUtility {
 			if ( currentBoardConfig.get(eachPos).equals(InitialConfiguration.EMPTY_POSITION) ||
 					currentBoardConfig.get(eachPos).equals(InitialConfiguration.FILLED_POSITION) ||
 					currentBoardConfig.get(eachPos).equals(InitialConfiguration.CAMP)){
+				// we cannot attack players in opponents' camp sites
+				if (currentBoardConfig.get(eachPos).equals(InitialConfiguration.FILLED_POSITION) &&
+					(eachPos.equals("B8") || eachPos.equals("B10") || eachPos.equals("C9") ||
+							eachPos.equals("D8") || eachPos.equals("D10")))
+					continue;
 				destinationPos = eachPos;
 				break;
 			}
