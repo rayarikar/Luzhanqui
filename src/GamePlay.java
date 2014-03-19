@@ -58,6 +58,10 @@ public class GamePlay {
 				// do nothing
 			}
 		}
+		// if we want to print the board
+		// hack added to print the board
+		else if (command.equals((new Message()).PRINT_DEBUG))
+			p2r.printBoardPositionsToStandardOutput(currentBoardConfig);
 		else
 			System.out.println("\nInvalid command by referee!");
 	}
