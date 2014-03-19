@@ -1,12 +1,10 @@
-package gamePlay;
+
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import MessageParser.InitialConfiguration;
-import MessageParser.Utility;
 
 /**
  * This class has all utility methods required to generate random moves.

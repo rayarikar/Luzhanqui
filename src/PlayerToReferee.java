@@ -1,4 +1,4 @@
-package MessageParser;
+
 import java.util.List;
 import java.util.Map;
 
@@ -71,7 +71,7 @@ public class PlayerToReferee {
 	 */
 	public void sendMoveToReferee(String positionOne, String positionTwo){
 		String move = LEFT_PARENTHESIS + positionOne + " " + positionTwo + RIGHT_PARENTHESIS;
-		System.out.println("\n\nMove sent to referee: " + move);
+		System.out.println("\n" + move);
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class PlayerToReferee {
 		if (modifiedMap != null){
 			String move = LEFT_PARENTHESIS + outcomes.get(outcomes.size() - 2).toString() +
 					" " + outcomes.get(outcomes.size() - 1).toString() + RIGHT_PARENTHESIS;
-			System.out.println("\n\nMove made: " + move);
+//			System.out.println("\n\nMove made: " + move);
 			return modifiedMap;
 		}
 		else {

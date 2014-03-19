@@ -1,11 +1,9 @@
-package gamePlay;
+
 
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
 
-import MessageParser.PlayerToReferee;
-import MessageParser.RefereeToPlayer;
 
 public class GamePlay {
 	RefereeToPlayer r2p = new RefereeToPlayer();	
@@ -21,7 +19,7 @@ public class GamePlay {
 	public List readCommands() throws FileNotFoundException{
 		ReadReferee readRef = new ReadReferee();
 		List commands = readRef.getCommands();
-		System.out.println(commands);
+//		System.out.println(commands);
 		return commands;
 
 	}
@@ -46,7 +44,7 @@ public class GamePlay {
 			// process the outcome message of referee
 			if (values.get(0).equals(r2p.OUTCOME)){
 				currentBoardConfig = p2r.processMoveSentToReferee(currentBoardConfig, values);
-				p2r.printBoardPositionsToStandardOutput(currentBoardConfig);
+//				p2r.printBoardPositionsToStandardOutput(currentBoardConfig);
 			}
 			// process flag message
 			if (values.get(0).equals(r2p.FLAG))
