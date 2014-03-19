@@ -1,8 +1,6 @@
 package gamePlay;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -29,10 +27,6 @@ public class GamePlay {
 	}
 
 
-	// stub moves <-  read as pairs of 2
-	List<String> goPositions = new ArrayList(Arrays.asList("C5", "D5", "C3", "C4", "B6", "C6", "C3", "C4", "C6", "C8"));
-
-
 	/**
 	 * processes the referee command and prints the output
 	 * @param command
@@ -40,11 +34,16 @@ public class GamePlay {
 	public void processCommand(String command){
 		List values = r2p.processRefereeMessage(command);
 		// sane check for referee message
-		if (!values.isEmpty()){			
+		if (!values.isEmpty()){
+			// process init referee message
 			if (values.get(0).equals(r2p.INIT))
 				executeInitCommand(values.get(1).toString());
-			if (values.get(0).equals(r2p.GO) && values.get(1).toString().equals(r2p.PLAYER_NUMBER))
-				p2r.sendMoveToReferee(goPositions.remove(0), goPositions.remove(0));
+			// process go command of referee
+			if (values.get(0).equals(r2p.GO) && values.get(1).toString().equals(r2p.PLAYER_NUMBER)){
+				List<String> randomMoves = RandomMovesUtility.getRandomMove(currentBoardConfig);
+				p2r.sendMoveToReferee(randomMoves.get(0), randomMoves.get(1));
+			}
+			// process the outcome message of referee
 			if (values.get(0).equals(r2p.OUTCOME)){
 				currentBoardConfig = p2r.processMoveSentToReferee(currentBoardConfig, values);
 				p2r.printBoardPositionsToStandardOutput(currentBoardConfig);

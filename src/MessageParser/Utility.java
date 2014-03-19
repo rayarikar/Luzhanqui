@@ -128,11 +128,8 @@ public class Utility {
 	}	
 	
 	/**
-	 * returns map of all possible position from each position
-	 * @return Map
-	 */
-	/**
-	 * returns map of all possible position from each position
+	 * returns map of all possible position from each position.
+	 * For head quarters it returns an empty list as values
 	 * @return Map
 	 */
 	public static Map<String, List<String>> getAllPossibleMovesMap(){

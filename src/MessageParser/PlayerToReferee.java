@@ -91,7 +91,7 @@ public class PlayerToReferee {
 			return modifiedMap;
 		}
 		else {
-			System.out.println("Invalid outcome message sent by referee for move: " + outcomes);
+			System.out.println("\nInvalid outcome message sent by referee for move: " + outcomes);
 			System.out.println("Continuing with current board configuration ignoring this move");
 			return currentBoardConfig;
 		}
