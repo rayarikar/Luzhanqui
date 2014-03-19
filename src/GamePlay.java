@@ -100,6 +100,7 @@ public class GamePlay {
 		// if the player is opponent then only store the player number
 		if ( !player.equals(r2p.PLAYER_NUMBER)){
 			r2p.setOpponentFlagPosition(flagPositon);
+			currentBoardConfig.put(flagPositon, InitialConfiguration.FLAG);
 //			System.out.println("\n Opp Flag pos : " + r2p.OPPONENT_FLAG_POSITION);
 		}
 	}
