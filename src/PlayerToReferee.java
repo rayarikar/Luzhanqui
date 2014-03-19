@@ -35,7 +35,7 @@ public class PlayerToReferee {
 	}
 
 	/**
-	 * this method prints the board configuration
+	 * this method prints the entire board configuration
 	 * on the console
 	 */
 	public void printBoardPositionsToStandardOutput(Map<String, String> boardPosition){
@@ -51,6 +51,35 @@ public class PlayerToReferee {
 //							boardPosition.get(row + "" + column + "")
 //							.equalsIgnoreCase(InitialConfiguration.FILLED_POSITION))
 //						continue;				
+					// prints the position
+					System.out.print(LEFT_PARENTHESIS + 
+							(row + "" + column + "") + " " + 
+							boardPosition.get(row + "" + column + "") + 
+							RIGHT_PARENTHESIS);
+				} catch (Exception e){
+					continue;
+				}
+			}
+		}
+	}
+	
+	/**
+	 * this method prints the positions occupied by our player
+	 * on the board to the standard output
+	 */
+	public void printInitConfigToStandardOutput(Map<String, String> boardPosition){
+		for (char row = 'A'; row <= 'E'; row++){
+			System.out.println();
+			for (int column = 1; column <= 12; column++){
+				try{
+					// if it is a camp position do not print
+					if (boardPosition.get(row + "" + column + "")
+							.equalsIgnoreCase(InitialConfiguration.CAMP) ||
+							boardPosition.get(row + "" + column + "")
+							.equalsIgnoreCase(InitialConfiguration.EMPTY_POSITION) ||
+							boardPosition.get(row + "" + column + "")
+							.equalsIgnoreCase(InitialConfiguration.FILLED_POSITION))
+						continue;				
 					// prints the position
 					System.out.print(LEFT_PARENTHESIS + 
 							(row + "" + column + "") + " " + 
