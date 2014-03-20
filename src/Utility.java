@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The purpose of this class is to have all the utility methods which are common
- * to our program
+ * The purpose of this class is to have all the utility methods which 
+ * are common to our program
  * 
  * @author Rohan
  * 
@@ -17,12 +17,14 @@ public class Utility {
 	private static final String BOMB = "B";
 
 	/**
-	 * Method to return map of all possible positions of players The syntax for
-	 * positions is <position> ::= A1 | A2 | A3 | A4 | A5 | A6 | A7 | A8 | A9 |
-	 * A10 | A11 | A12 | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 | B9 | B10 | B11
-	 * | B12 | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10 | C11 | C12 | D1
-	 * | D2 | D3 | D4 | D5 | D6 | D7 | D8 | D9 | D10 | D11 | D12 | E1 | E2 | E3
-	 * | E4 | E5 | E6 | E7 | E8 | E9 | E10 | E11 | E12
+	 * Method to return map of all possible positions of players The 
+	 * syntax for positions is 
+	 * <position> ::= 
+	 * A1 | A2 | A3 | A4 | A5 | A6 | A7 | A8 | A9 | A10 | A11 | A12 
+	 * | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 | B9 | B10 | B11 | B12 
+	 * | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10 | C11 | C12 
+	 * | D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8 | D9 | D10 | D11 | D12 
+	 * | E1 | E2 | E3 | E4 | E5 | E6 | E7 | E8 | E9 | E10 | E11 | E12
 	 * 
 	 * @return Map
 	 */
@@ -30,16 +32,16 @@ public class Utility {
 		Map<String, String> positionMap = new HashMap<String, String>();
 		for (char currentChar = 'A'; currentChar <= 'E'; currentChar++) {
 			for (int position = 1; position <= 12; position++) {
-				positionMap.put("" + currentChar + position, "" + currentChar
-						+ position);
+				positionMap.put("" + currentChar + position, ""
+						+ currentChar + position);
 			}
 		}
 		return positionMap;
 	}
 
 	/**
-	 * Method to fetch the map of pieces <piece> ::= F | L | B | 1 | 2 | 3 | 4 |
-	 * 5 | 6 | 7 | 8 | 9
+	 * Method to fetch the map of pieces 
+	 * <piece> ::= F | L | B | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 	 * 
 	 * @return Map
 	 */
@@ -55,14 +57,15 @@ public class Utility {
 	}
 
 	/**
-	 * returns true if the position is valid and not a camp. Else returns false
+	 * returns true if the position is valid and not a camp. 
+	 * Else returns false
 	 * 
 	 * @param position
 	 * @return
 	 */
 	public static boolean isValidPosition(String position) {
-		HashMap<String, String> validPositionMap = (HashMap<String, String>) Utility
-				.getPositionMap();
+		HashMap<String, String> validPositionMap = 
+				(HashMap<String, String>) Utility.getPositionMap();
 		try {
 			String value = validPositionMap.get(position.toString());
 			if (value == null)
@@ -74,8 +77,8 @@ public class Utility {
 	}
 
 	/**
-	 * if the first position in a move is empty or the headquarters then return
-	 * false
+	 * if the first position in a move is empty or the headquarters then 
+	 * return false
 	 * 
 	 * @param boardConfiguration
 	 * @param positionOne
@@ -88,7 +91,8 @@ public class Utility {
 		if (boardConfiguration.get(positionOne).equals(
 				InitialConfiguration.EMPTY_POSITION))
 			return false;
-		// if the first position corresponds to B1, D1, B12 or D12 return false
+		// if the first position corresponds to B1, D1, B12 or D12 
+		// return false
 		if (positionOne.equals("B1") || positionOne.equals("D1")
 				|| positionOne.equals("D1") || positionOne.equals("D12"))
 			return false;
@@ -101,7 +105,8 @@ public class Utility {
 	 * @param message
 	 * @return StringBuilder
 	 */
-	public static StringBuilder removeStartBlankChars(StringBuilder message) {
+	public static StringBuilder removeStartBlankChars
+	(StringBuilder message) {
 		int index = 0;
 		while (index < message.toString().length()) {
 			if (!Character.isWhitespace(message.toString().charAt(index)))
@@ -401,9 +406,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.B +
 
 		InitialConfiguration.FIVE);
-		allMovesMap.put(InitialConfiguration.A + InitialConfiguration.FOUR,
+		allMovesMap.put(
+				InitialConfiguration.A + InitialConfiguration.FOUR,
 
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.A +
@@ -418,9 +424,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.C +
 
 		InitialConfiguration.FOUR);
-		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.FOUR,
+		allMovesMap.put(
+				InitialConfiguration.B + InitialConfiguration.FOUR,
 
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.B +
@@ -447,9 +454,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.D +
 
 		InitialConfiguration.FIVE);
-		allMovesMap.put(InitialConfiguration.C + InitialConfiguration.FOUR,
+		allMovesMap.put(
+				InitialConfiguration.C + InitialConfiguration.FOUR,
 
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.C +
@@ -464,9 +472,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.E +
 
 		InitialConfiguration.FOUR);
-		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.FOUR,
+		allMovesMap.put(
+				InitialConfiguration.D + InitialConfiguration.FOUR,
 
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.D +
@@ -484,23 +493,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.E +
 
 		InitialConfiguration.FIVE);
-		allMovesMap.put(InitialConfiguration.E + InitialConfiguration.FOUR,
+		allMovesMap.put(
+				InitialConfiguration.E + InitialConfiguration.FOUR,
 
-		allPossibleMoves);
-
-		allPossibleMoves = new ArrayList<String>();
-		allPossibleMoves.add(InitialConfiguration.A +
-
-		InitialConfiguration.FOUR);
-		allPossibleMoves.add(InitialConfiguration.A +
-
-		InitialConfiguration.SIX);
-		allPossibleMoves.add(InitialConfiguration.B +
-
-		InitialConfiguration.FIVE);
-		allMovesMap.put(InitialConfiguration.A + InitialConfiguration.FIVE,
-
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.A +
@@ -508,6 +504,21 @@ public class Utility {
 		InitialConfiguration.FOUR);
 		allPossibleMoves.add(InitialConfiguration.A +
 
+		InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.B +
+
+		InitialConfiguration.FIVE);
+		allMovesMap.put(
+				InitialConfiguration.A + InitialConfiguration.FIVE,
+
+				allPossibleMoves);
+
+		allPossibleMoves = new ArrayList<String>();
+		allPossibleMoves.add(InitialConfiguration.A +
+
+		InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.A +
+
 		InitialConfiguration.FIVE);
 		allPossibleMoves.add(InitialConfiguration.A +
 
@@ -527,9 +538,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.C +
 
 		InitialConfiguration.SIX);
-		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.FIVE,
+		allMovesMap.put(
+				InitialConfiguration.B + InitialConfiguration.FIVE,
 
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.B +
@@ -544,40 +556,42 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.D +
 
 		InitialConfiguration.FIVE);
-		allMovesMap.put(InitialConfiguration.C + InitialConfiguration.FIVE,
+		allMovesMap.put(
+				InitialConfiguration.C + InitialConfiguration.FIVE,
 
-		allPossibleMoves);
-
-		allPossibleMoves = new ArrayList<String>();
-		allPossibleMoves.add(InitialConfiguration.C +
-
-		InitialConfiguration.FOUR);
-		allPossibleMoves.add(InitialConfiguration.C +
-
-		InitialConfiguration.FIVE);
-		allPossibleMoves.add(InitialConfiguration.C +
-
-		InitialConfiguration.SIX);
-		allPossibleMoves.add(InitialConfiguration.D +
-
-		InitialConfiguration.FOUR);
-		allPossibleMoves.add(InitialConfiguration.D +
-
-		InitialConfiguration.SIX);
-		allPossibleMoves.add(InitialConfiguration.E +
-
-		InitialConfiguration.FOUR);
-		allPossibleMoves.add(InitialConfiguration.E +
-
-		InitialConfiguration.FIVE);
-		allPossibleMoves.add(InitialConfiguration.E +
-
-		InitialConfiguration.SIX);
-		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.FIVE,
-
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
+		allPossibleMoves.add(InitialConfiguration.C +
+
+		InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.C +
+
+		InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.C +
+
+		InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.D +
+
+		InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.D +
+
+		InitialConfiguration.SIX);
+		allPossibleMoves.add(InitialConfiguration.E +
+
+		InitialConfiguration.FOUR);
+		allPossibleMoves.add(InitialConfiguration.E +
+
+		InitialConfiguration.FIVE);
+		allPossibleMoves.add(InitialConfiguration.E +
+
+		InitialConfiguration.SIX);
+		allMovesMap.put(
+				InitialConfiguration.D + InitialConfiguration.FIVE,
+
+				allPossibleMoves);
+
+		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.D +
 
 		InitialConfiguration.FIVE);
@@ -587,9 +601,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.E +
 
 		InitialConfiguration.FOUR);
-		allMovesMap.put(InitialConfiguration.E + InitialConfiguration.FIVE,
+		allMovesMap.put(
+				InitialConfiguration.E + InitialConfiguration.FIVE,
 
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.A +
@@ -880,9 +895,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.B +
 
 		InitialConfiguration.TEN);
-		allMovesMap.put(InitialConfiguration.A + InitialConfiguration.NINE,
+		allMovesMap.put(
+				InitialConfiguration.A + InitialConfiguration.NINE,
 
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.A +
@@ -897,9 +913,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.C +
 
 		InitialConfiguration.NINE);
-		allMovesMap.put(InitialConfiguration.B + InitialConfiguration.NINE,
+		allMovesMap.put(
+				InitialConfiguration.B + InitialConfiguration.NINE,
 
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.B +
@@ -926,9 +943,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.D +
 
 		InitialConfiguration.TEN);
-		allMovesMap.put(InitialConfiguration.C + InitialConfiguration.NINE,
+		allMovesMap.put(
+				InitialConfiguration.C + InitialConfiguration.NINE,
 
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.C +
@@ -943,9 +961,10 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.E +
 
 		InitialConfiguration.NINE);
-		allMovesMap.put(InitialConfiguration.D + InitialConfiguration.NINE,
+		allMovesMap.put(
+				InitialConfiguration.D + InitialConfiguration.NINE,
 
-		allPossibleMoves);
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.D +
@@ -963,9 +982,9 @@ public class Utility {
 		allPossibleMoves.add(InitialConfiguration.E +
 
 		InitialConfiguration.TEN);
-		allMovesMap.put(InitialConfiguration.E + InitialConfiguration.NINE,
-
-		allPossibleMoves);
+		allMovesMap.put(
+				InitialConfiguration.E + InitialConfiguration.NINE,
+				allPossibleMoves);
 
 		allPossibleMoves = new ArrayList<String>();
 		allPossibleMoves.add(InitialConfiguration.A +
