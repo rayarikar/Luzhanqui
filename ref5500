@@ -4,4 +4,4 @@ PROGRAM=/course/cs5500sp14/Assignments/A7/ref5500.fasl
 #PROGRAM=ref5500.fasl
 #PROGRAM=ref5500.sch
 
-larceny --nobanner -- $PROGRAM 5500
+larceny --nobanner -- $PROGRAM 5500 $@
